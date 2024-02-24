@@ -25,9 +25,9 @@ static int	check_space(char *str)
 		return (printf("Error\n"), 1);
 	while (*str)
 	{
-		if (*str == ' ' || *str == '\t' || *str == '\n')
+		if (*str == ' ')
 			empty = 1;
-		else if (*str != ' ' || *str != '\t' || *str != '\n')
+		else if (*str != ' ')
 		{
 			empty = 0;
 			break ;
@@ -61,10 +61,9 @@ static int	check_char(char *str)
 static char	**input_tab(char **tab, char *str)
 {
 	tab = ft_split(str, ' ');
-	free(str);
 	if (!tab)
 		return (free(str), NULL);
-	return (tab);
+	return (free(str), tab);
 }
 
 char	**join_arg(char **av)
