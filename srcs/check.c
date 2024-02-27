@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 14:09:07 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/23 10:54:27 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/02/25 21:55:32 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check_space(char *str)
 	{
 		return (1);
 	}
-	if (ft_strcmp(str, "") == 0)
+	if (ft_strlen(str) == 0)
 		return (printf("Error\n"), 1);
 	while (*str)
 	{
@@ -58,14 +58,6 @@ static int	check_char(char *str)
 	return (0);
 }
 
-static char	**input_tab(char **tab, char *str)
-{
-	tab = ft_split(str, ' ');
-	if (!tab)
-		return (free(str), NULL);
-	return (free(str), tab);
-}
-
 char	**join_arg(char **av)
 {
 	int		i;
@@ -78,7 +70,7 @@ char	**join_arg(char **av)
 	i = 0;
 	while (av[++i])
 	{
-		if (check_space(av[i]))
+		if (check_space(av[i]) || (check_char(av[i])))
 		{
 			if (str)
 				free(str);
@@ -87,12 +79,11 @@ char	**join_arg(char **av)
 		if (!str)
 			str = ft_strdup("");
 		tmp = str;
-		if (check_char(av[i]))
-			return (free(tmp), NULL);
 		str = ft_strjoin(tmp, av[i]);
 		free(tmp);
 	}
-	return (input_tab(tab, str));
+	tab = ft_split(str, ' ');
+	return (free(str), tab);
 }
 
 int	check_doublon(int *tab, int size)
