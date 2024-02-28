@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:05:02 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/28 02:22:05 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/02/28 05:23:09 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ void    stack_add_front(t_stack **stack, t_list *new);
 void    sa(t_stack **stack_a);
 void    sb(t_stack **stack_b);
 void    swap_a_b(t_stack **stack_a, t_stack **stack_b);
+void    pa(t_stack **stack_a, t_stack **stack_b);
+void    pb(t_stack **stack_a, t_stack **stack_b);
 
 # endif
