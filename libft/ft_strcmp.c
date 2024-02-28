@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 04:22:40 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/28 04:27:32 by tpassin          ###   ########.fr       */
+/*   Created: 2024/02/23 07:41:46 by tpassin           #+#    #+#             */
+/*   Updated: 2024/02/23 07:42:38 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-void    pa(t_stack **stack_a, t_stack **stack_b)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-    t_stack *tmp;
-    
-    if (stack_b)
-    {
-        *tmp = stack    
-    }
+	if (!s1 || !s2)
+		return (0);
+	while (*s1 && *s1 == *s2)
+	{
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (*s1 - *s2);
 }

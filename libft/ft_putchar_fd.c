@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 04:22:40 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/28 04:27:32 by tpassin          ###   ########.fr       */
+/*   Created: 2023/11/14 12:43:20 by tpassin           #+#    #+#             */
+/*   Updated: 2023/11/15 23:43:27 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-void    pa(t_stack **stack_a, t_stack **stack_b)
+void	ft_putchar_fd(char c, int fd)
 {
-    t_stack *tmp;
-    
-    if (stack_b)
-    {
-        *tmp = stack    
-    }
+	write(fd, &c, 1);
 }

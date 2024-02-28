@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 04:22:40 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/28 04:27:32 by tpassin          ###   ########.fr       */
+/*   Created: 2023/11/27 17:02:30 by tpassin           #+#    #+#             */
+/*   Updated: 2024/02/26 05:23:56 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-void    pa(t_stack **stack_a, t_stack **stack_b)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-    t_stack *tmp;
-    
-    if (stack_b)
-    {
-        *tmp = stack    
-    }
+	if (!lst || !f)
+		return ;
+	while (lst)
+	{
+		(*f)(lst->content);
+		lst = lst->next;
+	}
 }

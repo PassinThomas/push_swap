@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 04:22:40 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/28 04:27:32 by tpassin          ###   ########.fr       */
+/*   Created: 2023/11/24 03:41:07 by tpassin           #+#    #+#             */
+/*   Updated: 2024/02/26 05:23:51 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-void    pa(t_stack **stack_a, t_stack **stack_b)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-    t_stack *tmp;
-    
-    if (stack_b)
-    {
-        *tmp = stack    
-    }
+	if (!lst && !del)
+		return ;
+	del(lst->content);
+	free(lst);
+	lst = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 14:09:07 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/25 21:55:32 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/02/28 01:45:22 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_space(char *str)
 {
-	int empty;
+	int	empty;
 
 	empty = 0;
 	if (!str)
@@ -88,8 +88,8 @@ char	**join_arg(char **av)
 
 int	check_doublon(int *tab, int size)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < size)
@@ -104,4 +104,32 @@ int	check_doublon(int *tab, int size)
 		i++;
 	}
 	return (0);
+}
+
+int	*ft_parse(char **av, int *i)
+{
+	char	**str;
+	int		*tab;
+	long	nbr;
+
+	*i = 0;
+	str = join_arg(av);
+	if (!str)
+		return (NULL);
+	while (str[*i])
+		(*i)++;
+	tab = (int *)malloc(sizeof(int) * (*i));
+	if (!tab)
+		return (free(tab), NULL);
+	*i = -1;
+	while (str[++(*i)])
+	{
+		nbr = ft_atoi(str[*i]);
+		if (nbr == 2147483650)
+			return (free(tab), ft_free(str), NULL);
+		tab[*i] = ft_atoi(str[*i]);
+	}
+	if (check_doublon(tab, *i))
+		return (ft_free(str), free(tab), NULL);
+	return (ft_free(str), tab);
 }

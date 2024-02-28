@@ -1,23 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/28 04:22:40 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/28 04:27:32 by tpassin          ###   ########.fr       */
+/*   Created: 2023/11/09 19:52:45 by tpassin           #+#    #+#             */
+/*   Updated: 2023/11/16 04:14:28 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "libft.h"
 
-void    pa(t_stack **stack_a, t_stack **stack_b)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-    t_stack *tmp;
-    
-    if (stack_b)
-    {
-        *tmp = stack    
-    }
+	unsigned char		*d;
+	const unsigned char	*s;
+	size_t				i;
+
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	if (d > s)
+	{
+		while (n-- > 0)
+			d[n] = s[n];
+	}
+	else
+	{
+		i = 0;
+		while (i < n)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	return (dest);
 }

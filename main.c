@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:07:50 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/27 00:50:48 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/02/27 23:04:06 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,6 @@
 // 	return ;
 // }
 
-int	ft_parse(char **av)
-{
-	int		i;
-	char	**str;
-	int		*tab;
-	long	nbr;
-
-	i = 0;
-	str = join_arg(av);
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	tab = (int *)malloc(sizeof(int) * i);
-	if (!tab)
-		return (free(tab), 0);
-	i = -1;
-	while (str[++i])
-	{
-		nbr = ft_atoi(str[i]);
-		if (nbr == 2147483650)
-			return (free(tab), ft_free(str), 0);
-		tab[i] = ft_atoi(str[i]);
-	}
-	if (check_doublon(tab, i))
-		return (ft_free(str), free(tab), 0);
-	return (ft_free(str), free(tab), 1);
-}
-
 int main(int ac, char **av)
 {
 	// t_list	*headA;
@@ -60,18 +31,23 @@ int main(int ac, char **av)
 
 	// headA = NULL;
 	// headB = NULL;
+	int	*tab;
+	int i;
+	i = 0;
 	if (ac > 1)
 	{
-		if (ft_parse(av))
+		tab = ft_parse(av, &i);
+		if (tab)
 		{
-			// t_list *current = headA;
-        	// while (current != NULL)
-        	// {
-            // 	printf("%d\n", current->content);
-            // 	current = current->next;
-        	// }
-        	// ft_lstclear(&headA, free);
-		}
+			int j = 0;
+			while (j < i)
+			{
+				printf("%d ", tab[j]);
+				j++;
+			}
+		printf("\n");
+		free(tab);
+		}		
 	}
 	return (0);
 }
