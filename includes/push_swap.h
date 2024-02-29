@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:05:02 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/28 05:23:09 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/02/29 05:25:48 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ int     check_sign(int c);
 int     check_doublon(int *tab, int size);
 int     *ft_parse(char **av, int *i);
 t_stack *new_stack(int nbr);
-void    stack_add_back(t_stack **stack, t_list *new);
-void    stack_add_front(t_stack **stack, t_list *new);
+t_stack	*lstlast(t_stack *stack);
+void	add_front(t_stack **stack, t_stack *new);
+void	add_back(t_stack **stack, t_stack *new);
+void    ft_clean(t_stack **stack);
 
 /*operation*/
 void    sa(t_stack **stack_a);
@@ -40,5 +42,15 @@ void    sb(t_stack **stack_b);
 void    swap_a_b(t_stack **stack_a, t_stack **stack_b);
 void    pa(t_stack **stack_a, t_stack **stack_b);
 void    pb(t_stack **stack_a, t_stack **stack_b);
+void	ra(t_stack **stack);
+void	rb(t_stack **stack);
+void	rr(t_stack **stack_a, t_stack **stack_b);
+void	rra(t_stack **stack);
+void	rrb(t_stack **stack);
+void	rrr(t_stack **stack_a, t_stack **stack_b);
+
+/*algo*/
+void    sort_2(t_stack **stack);
+void    sort_3(t_stack **stack);
 
 # endif

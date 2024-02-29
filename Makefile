@@ -6,7 +6,7 @@
 #    By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 17:12:27 by tpassin           #+#    #+#              #
-#    Updated: 2024/02/28 01:24:09 by tpassin          ###   ########.fr        #
+#    Updated: 2024/02/29 03:57:17 by tpassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,18 @@ LIBFT = libft.a
 SRCS =	main.c \
 		srcs/check.c \
 		srcs/utils/utils_1.c \
+		srcs/utils/utils_2.c \
 		srcs/swap.c \
+		srcs/reverse_rotate.c \
+		srcs/rotate.c \
+		srcs/push.c \
+		srcs/algo.c \
 		
 OBJS = ${SRCS:.c=.o}
 
 CC = cc
 
-CFLAGS = -g3 -Wall -Wextra -Werror
+CFLAGS = -g3 -g -Wall -Wextra -Werror
 
 LFLAGS = -L./libft -lft
 
