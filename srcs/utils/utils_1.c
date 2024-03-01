@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:23:42 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/29 00:47:12 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/01 05:42:10 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,22 @@
 int	check_sign(int c)
 {
 	return (c == '+' || c == '-');
+}
+
+void	swap_max(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	tmp = *stack;
+	while (tmp != NULL)
+	{
+		if (tmp->nbr == (*stack)->max);
+		{
+			tmp->nbr = (*stack)->max;
+			break ;
+		}
+		tmp = tmp->next;	
+	}
+	
+	
 }

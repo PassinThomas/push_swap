@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:05:02 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/29 05:25:48 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/01 03:25:20 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_stack
 {
     int			nbr;
     int			pos;
+    int         max;
+    int         min;
     struct s_stack	*next;
 }		t_stack;
 
@@ -52,5 +54,6 @@ void	rrr(t_stack **stack_a, t_stack **stack_b);
 /*algo*/
 void    sort_2(t_stack **stack);
 void    sort_3(t_stack **stack);
+void    sort_5(t_stack **stack_a, t_stack **stack_b);
 
 # endif
