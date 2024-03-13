@@ -17,20 +17,15 @@ int	check_sign(int c)
 	return (c == '+' || c == '-');
 }
 
-void	swap_max(t_stack **stack)
+int sizelist(t_stack *stack)
 {
-	t_stack	*tmp;
+    int i;
 
-	tmp = *stack;
-	while (tmp != NULL)
-	{
-		if (tmp->nbr == (*stack)->max);
-		{
-			tmp->nbr = (*stack)->max;
-			break ;
-		}
-		tmp = tmp->next;	
-	}
-	
-	
+    i = 0;
+    while (stack)
+    {
+        i++;
+        stack = stack->next;
+    }
+    return (i);
 }

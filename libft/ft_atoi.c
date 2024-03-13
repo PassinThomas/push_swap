@@ -14,6 +14,8 @@
 
 long	ft_atoi(const char *nptr)
 {
+	if (ft_strlen(nptr) > 11)
+		return (ft_putstr_fd("Error\n", 2), 2147483650);
 	int		i;
 	int		sign;
 	long	res;

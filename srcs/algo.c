@@ -6,16 +6,39 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 03:49:03 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/01 05:19:50 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/12 14:52:11 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+void	visual_stack(t_stack *a, t_stack *b)
+{
+	printf("[a]	[b]\n");
+	while (a || b)
+	{
+		if (a == NULL)
+			printf("-\t");
+		else
+			printf("{%d}\t", a->nbr);
+		if (b == NULL)
+			printf("-\n");
+		else
+			printf("{%d}\n", b->nbr);
+		if (a)
+			a = a->next;
+		if (b)
+		b = b->next;
+	}
+	printf("\n");
+}
+
 void	sort_2(t_stack **stack)
 {
 	if ((*stack)->nbr > (*stack)->next->nbr)
 		sa(stack);
+	else
+		return ;
 }
 
 void	sort_3(t_stack **stack)
@@ -27,17 +50,17 @@ void	sort_3(t_stack **stack)
 	first = (*stack)->nbr;
 	second = (*stack)->next->nbr;
 	thrd = (*stack)->next->next->nbr;
-	if (first > second && first > thrd && second > thrd)
-	{
-		ra(stack);
-		sa(stack);
-	}
-	else if (first > second && first < thrd && second < first)
+	if (first > second && first < thrd && second < thrd)
 		sa(stack);
 	else if (first < second && first > thrd && second > thrd)
 		rra(stack);
 	else if (first > second && first > thrd && second < thrd)
 		ra(stack);
+	else if (first > second && first > thrd && second > thrd)
+	{
+		ra(stack);
+		sa(stack);
+	}
 	else if (first < second && first < thrd && second > thrd)
 	{
 		sa(stack);
@@ -45,25 +68,21 @@ void	sort_3(t_stack **stack)
 	}
 }
 
-void    sort_5(t_stack **stack_a, t_stack **stack_b)
+int	stack_sort(t_stack *stack)
 {
-	int	first;
-	int	second;
-	int	thrd;
-	int	fourth;
-	int	fifth;
+	t_stack *tmp;
 
-	first = (*stack_a)->nbr;
-	second = (*stack_a)->next->nbr;
-	thrd = (*stack_a)->next->next->nbr;
-	fourth = (*stack_a)->next->next->next->nbr;
-	fifth = (*stack_a)->next->next->next->next->nbr;
-	if (first > second)
-		sa(stack_a);
-	pb(stack_a, stack_b);
-	pb(stack_a, stack_b);
-	sort_3(stack_a);
-	pa(stack_a, stack_b);
-    pa(stack_a, stack_b);
+	tmp = stack;
+	while (tmp->next != NULL)
+	{
+		if (tmp->nbr > tmp->next->nbr)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
+void	sort_all(t_stack **stack_a, t_stack	**stack_b)
+{
+	push_a_to_b(stack_a, stack_b);
+}

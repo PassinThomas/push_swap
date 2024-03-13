@@ -21,7 +21,7 @@ static t_stack	*before_last(t_stack *stack)
 	return (stack);
 }
 
-void	rra(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
 	t_stack	*tmp;
 	t_stack	*new_head;
@@ -34,21 +34,21 @@ void	rra(t_stack **stack)
 	tmp->next = NULL;
 }
 
+void	rra(t_stack **stack)
+{
+	reverse_rotate(stack);
+	ft_putstr_fd("rra\n", 1);
+}
+
 void	rrb(t_stack **stack)
 {
-	t_stack	*tmp;
-	t_stack	*new_head;
-
-	if (!stack || !*stack || !(*stack)->next)
-		return ;
-	new_head = lstlast(*stack);
-	tmp = before_last(*stack);
-	add_front(stack, new_head);
-	tmp->next = NULL;
+	reverse_rotate(stack);
+	ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
+	ft_putstr_fd("rrr\n", 1);
 }

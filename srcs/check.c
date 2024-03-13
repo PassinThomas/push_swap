@@ -22,7 +22,7 @@ static int	check_space(char *str)
 		return (1);
 	}
 	if (ft_strlen(str) == 0)
-		return (printf("Error\n"), 1);
+		return (ft_putstr_fd("Error\n", 2), 1);
 	while (*str)
 	{
 		if (*str == ' ')
@@ -35,7 +35,7 @@ static int	check_space(char *str)
 		str++;
 	}
 	if (empty == 1)
-		return (printf("Error\n"), 1);
+		return (ft_putstr_fd("Error\n", 2), 1);
 	return (0);
 }
 
@@ -48,11 +48,11 @@ static int	check_char(char *str)
 	{
 		if (check_sign(str[i]) && ((!ft_isdigit(str[i + 1]))
 				|| (str[i + 1] == '\0')))
-			return (printf("Error\n"), 1);
-		if ((check_sign(str[i])) && (ft_isdigit(str[i - 1])))
-			return (printf("Error\n"), 1);
-		if (!check_sign(str[i]) && !ft_isdigit(str[i]) && str[i] != ' ')
-			return (printf("Error\n"), 1);
+			return (ft_putstr_fd("Error\n", 2), 1);
+		else if ((check_sign(str[i])) && (ft_isdigit(str[i - 1])))
+			return (ft_putstr_fd("Error\n", 2), 1);
+		else if (!check_sign(str[i]) && !ft_isdigit(str[i]) && str[i] != ' ')
+			return (ft_putstr_fd("Error\n", 2), 1);
 		i++;
 	}
 	return (0);
@@ -74,7 +74,7 @@ char	**join_arg(char **av)
 		{
 			if (str)
 				free(str);
-			return (NULL);
+			exit (0);
 		}
 		if (!str)
 			str = ft_strdup("");
@@ -98,7 +98,7 @@ int	check_doublon(int *tab, int size)
 		while (j < size)
 		{
 			if (tab[i] == tab[j])
-				return (printf("Error\ndoublon\n"), 1);
+				return (ft_putstr_fd("Error\n", 2), 1);
 			j++;
 		}
 		i++;

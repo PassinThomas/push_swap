@@ -23,6 +23,8 @@ SRCS =	main.c \
 		srcs/rotate.c \
 		srcs/push.c \
 		srcs/algo.c \
+		srcs/utils/input_utils.c \
+		srcs/big_algo.c \
 		
 OBJS = ${SRCS:.c=.o}
 
