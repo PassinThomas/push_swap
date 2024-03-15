@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 03:49:03 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/12 14:52:11 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/15 05:08:58 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	sort_3(t_stack **stack)
 
 int	stack_sort(t_stack *stack)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = stack;
 	while (tmp->next != NULL)
@@ -82,7 +82,62 @@ int	stack_sort(t_stack *stack)
 	return (1);
 }
 
+void printstacks(t_stack *a, t_stack *b)
+{
+	t_stack *tmp = a;
+
+	int i = 0;
+	while (tmp)
+	{
+		printf("[%i]\t%i\n", i++, tmp->nbr);
+		tmp = tmp->next;
+	}
+	printf("STACK A\n");
+	tmp = b;
+	i = 0;
+	while (tmp)
+	{
+		printf("[%i]\t%i\n", i++, tmp->nbr);
+		tmp = tmp->next;
+	}
+	printf("STACK B\n");
+}
+
 void	sort_all(t_stack **stack_a, t_stack	**stack_b)
 {
+	if (stack_sort(*stack_a))
+		return (ft_clean(stack_a));
+	// tout push dans b sauf 3
+	// algo de 3
 	push_a_to_b(stack_a, stack_b);
+	printstacks(*stack_a, *stack_b);
+	while (*stack_b)
+	{
+		update_index(*stack_a);
+		update_index(*stack_b);
+		find_daron(*stack_a, *stack_b);
+		pa(stack_a, stack_b);
+	}
+	/*
+	while (b) ok
+	{
+		int min_total = INT_MAX;
+		while (b)
+		{
+			trouver daron de chaque element selon a
+			int pere = daron(b->value, a); ok
+			int prix_a = price(daron);
+			int prix_b = price(b->value);
+			int total = calctotal(prix_a, prix_b);
+			if (total < min_total)
+			{
+				int price_to_exec_a = prix_a
+				int price_to_exec_b = prix_b
+				total = min_total
+			}
+		}
+		exec(price_to_exec_a,price_to_exec_b);
+	}
+	// algo fini
+	*/
 }

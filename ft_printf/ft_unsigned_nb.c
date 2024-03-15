@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_algo.c                                         :+:      :+:    :+:   */
+/*   ft_unsigned_nb.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: tpassin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 16:15:07 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/14 01:27:25 by tpassin          ###   ########.fr       */
+/*   Created: 2023/12/03 18:49:38 by tpassin           #+#    #+#             */
+/*   Updated: 2023/12/04 18:50:37 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "ft_printf.h"
 
-void	push_a_to_b(t_stack **stack_a, t_stack **stack_b)
+size_t	ft_unsigned_nb(unsigned int nb, int *ptr)
 {
-	t_stack	*tmp;
-
-	if (!*stack_a || !stack_a)
-		return ;
-	tmp = *stack_a;
-	while (sizelist(*stack_a) > 3)
-        pb(stack_a, stack_b);
-	sort_3(stack_a);
+	if (nb > 9)
+		ft_unsigned_nb(nb / 10, ptr);
+	*ptr += ft_putchar(nb % 10 + 48);
+	return (*ptr);
 }

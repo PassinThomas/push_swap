@@ -6,13 +6,13 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 07:43:14 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/23 07:43:34 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/14 01:01:58 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_free(char **tab)
+void	ft_free(char **tab)
 {
 	int	i;
 

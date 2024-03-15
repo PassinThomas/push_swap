@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:23:42 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/01 05:42:10 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/14 00:59:59 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ int	check_sign(int c)
 	return (c == '+' || c == '-');
 }
 
-int sizelist(t_stack *stack)
+int	sizelist(t_stack *stack)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (stack)
-    {
-        i++;
-        stack = stack->next;
-    }
-    return (i);
+	i = 0;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
 }

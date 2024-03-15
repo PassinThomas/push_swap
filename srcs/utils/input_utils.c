@@ -1,53 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/14 00:54:27 by tpassin           #+#    #+#             */
+/*   Updated: 2024/03/15 01:19:34 by tpassin          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/push_swap.h"
 
-void    sort_tab(int *tab,int i, int j)
+void	insert_list(char **av, t_stack **headA, int *nb)
 {
-    int k;
-    int tmp;
+	int	i;
+	int	j;
+	int	*tab;
 
-    k = 0;
-    j = 0;
-    while (j < i)
-    {
-        k = j + 1;
-        while (k < i)
-        {
-            if (tab[j] > tab[k])
-            {
-                tmp = tab[j];
-                tab[j] = tab[k];
-                tab[k] = tmp;
-            }
-            k++;
-        }
-        j++;
-    }
-}
-
-void insert_list(char **av, t_stack **headA, int *nb)
-{
-    int i;
-	int j;
-    int *tab;
-
-    i = 0;
+	i = 0;
 	j = 0;
-    *nb = 0;
-    tab = ft_parse(av, &i);
-    if (tab)
-    {
-        while (j < i)
-        {
-            add_back(headA, new_stack(tab[j]));
-            j++;
+	*nb = 0;
+	tab = ft_parse(av, &i);
+	if (tab)
+	{
+		while (j < i)
+		{
+			add_back(headA, new_stack(tab[j]));
+			j++;
 			(*nb)++;
-        }
-        if (i >= 4)
-        {
-            sort_tab(tab, i, j);
-            (*headA)->median = tab[(i / 2) - 1];
-        }
-        free(tab);
-    }
-    return;
+		}
+		free(tab);
+	}
+	else
+		exit(1);
+	return ;
 }

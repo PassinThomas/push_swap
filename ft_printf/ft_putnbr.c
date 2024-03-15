@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_algo.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 16:15:07 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/14 01:27:25 by tpassin          ###   ########.fr       */
+/*   Created: 2023/11/14 12:48:50 by tpassin           #+#    #+#             */
+/*   Updated: 2023/12/08 10:35:02 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "ft_printf.h"
 
-void	push_a_to_b(t_stack **stack_a, t_stack **stack_b)
+int	ft_putnbr(int n, int *ptr)
 {
-	t_stack	*tmp;
+	long	nb;
 
-	if (!*stack_a || !stack_a)
-		return ;
-	tmp = *stack_a;
-	while (sizelist(*stack_a) > 3)
-        pb(stack_a, stack_b);
-	sort_3(stack_a);
+	nb = n;
+	if (nb < 0)
+	{
+		*ptr += ft_putchar('-');
+		nb *= -1;
+	}
+	if (nb > 9)
+		ft_putnbr(nb / 10, ptr);
+	*ptr += ft_putchar(nb % 10 + 48);
+	return (*ptr);
 }

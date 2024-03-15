@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 22:07:05 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/28 05:14:01 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/14 00:56:26 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	swap(t_stack *stack)
 {
-	int nbr;
-	int nbr2;
-	t_stack *tmp;
+	int		nbr;
+	int		nbr2;
+	t_stack	*tmp;
 
 	if (!stack || !stack->nbr || !stack->next->nbr)
 		return ;

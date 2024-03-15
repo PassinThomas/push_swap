@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_algo.c                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 16:15:07 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/14 01:27:25 by tpassin          ###   ########.fr       */
+/*   Created: 2023/11/14 12:44:29 by tpassin           #+#    #+#             */
+/*   Updated: 2023/12/05 12:49:23 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "ft_printf.h"
 
-void	push_a_to_b(t_stack **stack_a, t_stack **stack_b)
+int	ft_putstr(char *s)
 {
-	t_stack	*tmp;
+	int	i;
 
-	if (!*stack_a || !stack_a)
-		return ;
-	tmp = *stack_a;
-	while (sizelist(*stack_a) > 3)
-        pb(stack_a, stack_b);
-	sort_3(stack_a);
+	i = 0;
+	if (!s)
+	{
+		return (ft_putstr("(null)"));
+	}
+	while (s && s[i])
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
+	if (i < 0)
+		return (-1);
+	return (i);
 }

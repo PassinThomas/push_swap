@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 00:51:21 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/29 04:04:31 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/14 01:00:50 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ t_stack	*new_stack(int nbr)
 	return (stack);
 }
 
-void ft_clean(t_stack **stack)
+void	ft_clean(t_stack **stack)
 {
-	t_stack *current;
-	t_stack *next;
+	t_stack	*current;
+	t_stack	*next;
 
 	if (!stack || !*stack)
 		return ;

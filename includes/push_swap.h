@@ -6,63 +6,67 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:05:02 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/12 16:12:48 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/15 04:46:55 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
 # include "../libft/libft.h"
+# include <limits.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_stack
 {
-    int			nbr;
-    int         index;
-    int         pos;
-    int         status;
-    int         median;
-    struct s_stack  *target;
-    struct s_stack	*next;
-}		t_stack;
+	int				nbr;
+	int				index;
+	int				status;
+	int				prix;
+	struct s_stack	*daron;
+	struct s_stack	*next;
+}					t_stack;
 
 /*parsing*/
-char	**join_arg(char **av);
-int     check_sign(int c);
-int     check_doublon(int *tab, int size);
-void    insert_list(char **av, t_stack **headA, int *nb);
-int     *ft_parse(char **av, int *i);
-void	add_front(t_stack **stack, t_stack *new);
-void	add_back(t_stack **stack, t_stack *new);
-void    ft_clean(t_stack **stack);
-int     sizelist(t_stack *stack);
-t_stack *new_stack(int nbr);
-t_stack	*lstlast(t_stack *stack);
-int     sizelist(t_stack *stack);
+char				**join_arg(char **av);
+int					check_sign(int c);
+int					check_doublon(int *tab, int size);
+void				insert_list(char **av, t_stack **headA, int *nb);
+int					*ft_parse(char **av, int *i);
+void				add_front(t_stack **stack, t_stack *new);
+void				add_back(t_stack **stack, t_stack *new);
+void				ft_clean(t_stack **stack);
+int					sizelist(t_stack *stack);
+t_stack				*new_stack(int nbr);
+t_stack				*lstlast(t_stack *stack);
+int					sizelist(t_stack *stack);
 
 /*operation*/
-void	visual_stack(t_stack *a, t_stack *b);
-void    sa(t_stack **stack_a);
-void    sb(t_stack **stack_b);
-void    ss(t_stack **stack_a, t_stack **stack_b);
-void    pa(t_stack **stack_a, t_stack **stack_b);
-void    pb(t_stack **stack_a, t_stack **stack_b);
-void	ra(t_stack **stack);
-void	rb(t_stack **stack);
-void	rr(t_stack **stack_a, t_stack **stack_b);
-void	rra(t_stack **stack);
-void	rrb(t_stack **stack);
-void	rrr(t_stack **stack_a, t_stack **stack_b);
+void				visual_stack(t_stack *a, t_stack *b);
+void				sa(t_stack **stack_a);
+void				sb(t_stack **stack_b);
+void				ss(t_stack **stack_a, t_stack **stack_b);
+void				pa(t_stack **stack_a, t_stack **stack_b);
+void				pb(t_stack **stack_a, t_stack **stack_b);
+void				ra(t_stack **stack);
+void				rb(t_stack **stack);
+void				rr(t_stack **stack_a, t_stack **stack_b);
+void				rra(t_stack **stack);
+void				rrb(t_stack **stack);
+void				rrr(t_stack **stack_a, t_stack **stack_b);
 
 /*algo*/
-int     stack_sort(t_stack *stack);
-void    sort_2(t_stack **stack);
-void    sort_3(t_stack **stack);
-void    sort_all(t_stack **stack_a, t_stack **stack_b);
-void    push_a_to_b(t_stack **stack_a, t_stack **stack_b);
+int					stack_sort(t_stack *stack);
+void				sort_2(t_stack **stack);
+void				sort_3(t_stack **stack);
+void				sort_all(t_stack **stack_a, t_stack **stack_b);
+void				push_a_to_b(t_stack **stack_a, t_stack **stack_b);
 
-# endif
+/* update index */
+void	find_daron(t_stack *stack_a, t_stack *stack_b);
+int		get_total(t_stack *satck_b, t_stack *b_daron, t_stack *stack_a);
+void	update_index(t_stack *stack);
+
+#endif

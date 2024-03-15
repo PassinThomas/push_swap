@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 23:02:06 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/29 01:55:52 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/14 01:04:33 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*ft_strrchr(const char *s, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
-long		ft_atoi(const char *nptr);
+long	ft_atoi(const char *nptr);
 char	*ft_itoa(int nb);
 char	*ft_strdup(const char *s);
 void	*ft_calloc(size_t nmemb, size_t size);
