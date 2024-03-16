@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:07:50 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/15 04:30:12 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/16 00:09:01 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int main(int ac, char **av)
 	nb = 0;
 	headA = NULL;
 	headB = NULL;
-	
-	if (ac > 2)
+	if (ac > 1)
 	{
 		insert_list(av, &headA, &nb);
 		if (nb == 1)
@@ -34,10 +33,7 @@ int main(int ac, char **av)
 			sort_3(&headA);
 		else
 			sort_all(&headA, &headB);
-		if (headA)
-			ft_clean(&headA);
-		if (headB)
-			ft_clean(&headB);
+		ft_clean(&headA);
 	}
 	return (0);
 }
