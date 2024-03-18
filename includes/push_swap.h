@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:05:02 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/16 02:53:02 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/18 15:54:45 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void				push_a_to_b(t_stack **stack_a, t_stack **stack_b);
 void	find_daron(t_stack *stack_a, t_stack *stack_b);
 int		get_total(t_stack *stack_b, t_stack *b_daron, t_stack *stack_a);
 void	update_index(t_stack *stack);
+t_stack	*find_min(t_stack *stack);
 t_stack	*calcul_price(t_stack *stack);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:10:26 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/16 04:30:01 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/18 18:01:10 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ t_stack	*find_min(t_stack *stack)
 	t_stack	*tmp;
 	t_stack	*min;
 
-	tmp = stack->next;
+	tmp = stack;
 	min = stack;
-	while (tmp->next)
+	while (tmp)
 	{
 		if (min->nbr > tmp->nbr)
 			min = tmp;
@@ -80,10 +80,12 @@ t_stack	*calcul_price(t_stack *stack)
 	t_stack	*tmp;
 	
 	best_price = stack;
-	tmp = stack;
+	tmp = stack->next;
 	while (tmp)
 	{
 		if (best_price->prix > tmp->prix)
+			best_price = tmp;
+		else if (best_price->prix == tmp->prix && tmp->nbr > best_price->nbr)
 			best_price = tmp;
 		tmp = tmp->next;
 	}
@@ -94,12 +96,10 @@ void	find_daron(t_stack *stack_a, t_stack *stack_b)
 {
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
+	t_stack	*pere;
 	int			min_total;
-	t_stack			*pere;
 	int				total;
 
-	update_index(stack_b);
-	update_index(stack_a);
 	tmp_b = stack_b;
 	while (tmp_b)
 	{

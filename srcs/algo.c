@@ -6,11 +6,31 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 03:49:03 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/16 09:44:25 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/18 17:20:56 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	to_the_top(t_stack **a)
+{
+	t_stack	*min;
+
+	min = find_min(*a);
+	while (min->index != 0)
+	{
+		if (min->status == 0)
+		{
+			ra(a);
+			update_index(*a);
+		}
+		else
+		{
+			rra(a);
+			update_index(*a);
+		}
+	}
+}
 
 void	visual_stack(t_stack *a, t_stack *b)
 {
@@ -40,6 +60,31 @@ void	sort_2(t_stack **stack)
 	else
 		return ;
 }
+
+// void sort_3(t_stack **stack)
+// {
+//     int first = (*stack)->nbr;
+//     int second = (*stack)->next->nbr;
+//     int third = (*stack)->next->next->nbr;
+
+//     // Si les trois éléments sont déjà triés, aucune action n'est nécessaire
+//     if (first <= second && second <= third) return;
+
+//     // Si le premier élément est le plus grand, il doit être déplacé à la fin
+//     if (first > second && first > third) {
+//         ra(stack);
+//         sa(stack);
+//     }
+//     // Si le deuxième élément est le plus grand, il doit être déplacé à la fin
+//     else if (second > first && second > third) {
+//         rra(stack);
+//     }
+//     // Si le troisième élément est le plus grand, il doit être déplacé à la fin
+//     else if (third > first && third > second) {
+//         ra(stack);
+//         sa(stack);
+//     }
+// }
 
 void	sort_3(t_stack **stack)
 {
@@ -87,134 +132,229 @@ void printstacks(t_stack *a, t_stack *b)
 	t_stack *tmp = a;
 
 	int i = 0;
+	printf("STACK A\n");
 	while (tmp)
 	{
-		printf("[%i]\t%i\n", i++, tmp->nbr);
+		printf("index:[%i]\tnbr: %i\n", tmp->index, tmp->nbr);
 		tmp = tmp->next;
 	}
-	printf("STACK A\n");
 	tmp = b;
 	i = 0;
+	printf("STACK B\n");
 	while (tmp)
 	{
 		printf("[%i]\t%i\n", i++, tmp->nbr);
 		tmp = tmp->next;
 	}
-	printf("STACK B\n");
 }
 
-void	mouv_top(t_stack *a, t_stack *b)
-{
-	if (a->status == 0 && b->status == 0)
-	{
-		while (a->index != 0 && b->index != 0)
-		{
-			rr(&a, &b);
-			update_index(a);
-			update_index(b);
-		}
-		if (a->index != 0)
-		{
-			while (a->index != 0)
-			{
-				ra(&a);
-				update_index(a);
-			}
-		}
-		else if (b->index != 0)
-		{
-			while (b->index != 0)
-			{
-				rb(&b);
-				update_index(b);
-			}
-		}
-	}
-}
+// int	mouv_top(t_stack **a, t_stack **b, t_stack *target)
+// {
+// 	if (target->daron->status == 0 && target->status == 0)
+// 	{
+// 		while (target->daron->index != 0 && target->index != 0)
+// 		{
+// 			rr(a, b);
+// 			update_index(*a);
+// 			update_index(*b);
+// 		}
+// 		if (target->daron->index != 0)
+// 		{
+// 			while (target->daron->index != 0)
+// 			{
+// 				ra(a);
+// 				update_index(*a);
+// 			}
+// 		}
+// 		else
+// 		{
+// 			while (target->index != 0)
+// 			{
+// 				rb(b);
+// 				update_index(*b);
+// 			}
+// 		}
+// 		return (1);
+// 	}
+// 	return (0);
+// }
 
-void	mouv_bottom(t_stack *a, t_stack *b)
-{
-	if (a->status == 1 && b->status == 1)
-	{
-		while (a->index != 0 && b->index != 0)
-		{
-			rrr(&a, &b);
-			update_index(a);
-			update_index(b);
-		}
-		if (a->index != 0)
-		{
-			while (a->index != 0)
-			{
-				rra(&a);
-				update_index(a);
-			}
-		}
-		else if (b->index != 0)
-		{
-			while (b->index != 0)
-			{
-				rrb(&b);
-				update_index(b);
-			}
-		}
-	}
-}
+// int	mouv_bottom(t_stack **a, t_stack **b, t_stack *target)
+// {
+// 	if (target->daron->status == target->status)
+// 	{
+// 		while (target->daron->index != 0 && target->index != 0)
+// 		{
+// 			rrr(a, b);
+// 			update_index(*a);
+// 			update_index(*b);
+// 		}
+// 		if (target->daron->index != 0)
+// 		{
+// 			while (target->daron->index != 0)
+// 			{
+// 				rra(a);
+// 				update_index(*a);
+// 			}
+// 		}
+// 		else
+// 		{
+// 			while (target->index != 0)
+// 			{
+// 				rrb(b);
+// 				update_index(*b);
+// 			}
+// 		}
+// 		return (1);
+// 	}
+// 	return (0);
+// }
 
-void mouv_bottom_top(t_stack *a, t_stack *b)
-{
-	if ((a)->status == 1 && b->status == 0)
-	{
-		while(a->index != 0)
-		{
-			rra(&a);
-			update_index(a);
-		}
-		while (b->index != 0)
-		{
-			rb(&b);
-			update_index(b);
-		}
-	}
-}
+// int mouv_bottom_top(t_stack **a, t_stack **b, t_stack *target)
+// {
+// 	if (target->daron->status == 1 && target->status == 0)
+// 	{
+// 		while(target->daron->index != 0)
+// 		{
+// 			rra(a);
+// 			update_index(*a);
+// 		}
+// 		while (target->index != 0)
+// 		{
+// 			rb(b);
+// 			update_index(*b);
+// 		}
+// 		return (1);
+// 	}
+// 	return (0);
+// }
 
-void mouv_top_bottom(t_stack *a, t_stack *b)
-{
-	if (a->status == 0 && b->status == 1)
-	{
-		while(a->index != 0)
-		{
-			ra(&a);
-			update_index(a);
-		}
-		while (b->index != 0)
-		{
-			rrb(&b);
-			update_index(b);
-		}
-	}
-}
+// int mouv_top_bottom(t_stack **a, t_stack **b, t_stack *target)
+// {
+// 	if (target->daron->status == 0 && target->status == 1)
+// 	{
+// 		while(target->daron->index != 0)
+// 		{
+// 			ra(a);
+// 			update_index(*a);
+// 		}
+// 		while (target->index != 0)
+// 		{
+// 			rrb(b);
+// 			update_index(*b);
+// 		}
+// 		return (1);
+// 	}
+// 	return (0);
+// }
 
 void	sort_all(t_stack **stack_a, t_stack	**stack_b)
 {
 	if (stack_sort(*stack_a))
 		return (ft_clean(stack_a));
-	// tout push dans b sauf 3
-	// algo de 3
 	push_a_to_b(stack_a, stack_b);
-	// printstacks(*stack_a, *stack_b);
-	// t_stack *tmp = *stack_b;
+	sort_3(stack_a);
+	// printstacks(*stack_a, *stack_a);
+	t_stack *target;
 	while (*stack_b)
 	{
+		update_index(*stack_a);
+		update_index(*stack_b);
 		find_daron(*stack_a, *stack_b);
-		mouv_top(*stack_a, *stack_b);
-		mouv_bottom(*stack_a, *stack_b);
-		mouv_bottom_top(*stack_a, *stack_b);
-		mouv_top_bottom(*stack_a, *stack_b);
+		target = calcul_price(*stack_b);
+		while(target->index != 0 || target->daron->index != 0)
+		{
+			if (target->daron->status == target->status && target->status == 0)
+			{
+				while(target->daron->index != 0 && target->index != 0)
+				{
+					rr(stack_a, stack_b);
+					update_index(*stack_a);
+					update_index(*stack_b);
+				}
+				if (target->daron->index != 0)
+				{
+					while(target->daron->index != 0)
+					{
+						// printstacks(*stack_a, *stack_b);
+						ra(stack_a);
+						update_index(*stack_a);
+						// printstacks(*stack_a, *stack_b);
+					}
+				}
+				else
+				{
+					while(target->index != 0)
+					{
+						rb(stack_b);
+						update_index(*stack_b);
+					}
+				}
+			}
+			else if (target->daron->status == target->status && target->status == 1)
+			{
+				while(target->daron->index != 0 && target->index != 0)
+				{
+					// printf("target index: %d\ttarget daron index: %d\n", target->index, target->daron->index);
+					rrr(stack_a, stack_b);
+					update_index(*stack_a);
+					update_index(*stack_b);
+				}
+				if (target->daron->index != 0)
+				{
+					while(target->daron->index != 0)
+					{
+						rra(stack_a);
+						update_index(*stack_a);
+					}
+				}
+				else
+				{
+					while (target->index != 0)
+					{
+						rrb(stack_b);
+						update_index(*stack_b);
+					}
+				}
+			}
+			else if (target->daron->status == 0 && target->status == 1)
+			{
+				while(target->index != 0)
+				{
+					// printf("target index rrb: %d\n", target->index);
+					rrb(stack_b);
+					update_index(*stack_b);
+					// printf("target index rrb: %d\n", target->index);
+				}
+				while(target->daron->index != 0)
+				{
+					// printstacks(*stack_a, *stack_b);
+					ra(stack_a);
+					update_index(*stack_a);
+					// printstacks(*stack_a, *stack_b);
+				}
+			}
+			else
+			{	
+				while(target->index != 0)
+				{
+					rb(stack_b);
+					update_index(*stack_b);
+				}
+				while(target->daron->index != 0)
+				{
+					rra(stack_a);
+					update_index(*stack_a);
+				}		
+			}
+		}
 		pa(stack_a, stack_b);
+			// printf("cible: %d\tcible index: [%d]\n", target->daron->nbr, target->daron->index);
+			// printstacks(*stack_a, *stack_b);
 	}
-	// printstacks(*stack_a, *stack_b);
 	update_index(*stack_a);
+	to_the_top(stack_a);
+	// printstacks(*stack_a, *stack_a);
 	/*
 	while (b) ok
 	{
