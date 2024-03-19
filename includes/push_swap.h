@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:05:02 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/18 15:54:45 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/19 05:23:02 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,11 @@ int					sizelist(t_stack *stack);
 t_stack				*new_stack(int nbr);
 t_stack				*lstlast(t_stack *stack);
 int					sizelist(t_stack *stack);
+t_stack				*find_max(t_stack *stack);
+t_stack				*find_min(t_stack *stack);
+
 
 /*operation*/
-void				visual_stack(t_stack *a, t_stack *b);
 void				sa(t_stack **stack_a);
 void				sb(t_stack **stack_b);
 void				ss(t_stack **stack_a, t_stack **stack_b);
@@ -70,5 +72,11 @@ int		get_total(t_stack *stack_b, t_stack *b_daron, t_stack *stack_a);
 void	update_index(t_stack *stack);
 t_stack	*find_min(t_stack *stack);
 t_stack	*calcul_price(t_stack *stack);
+
+/*Mouv*/
+void    mouv_top(t_stack *target, t_stack **stack_a, t_stack **stack_b);
+void    mouv_bottom(t_stack *target, t_stack **stack_a, t_stack **stack_b);
+void    mouv_top_bot(t_stack *target, t_stack **stack_a, t_stack **stack_b);
+void	mouv_bot_top(t_stack *target, t_stack **stack_a, t_stack **stack_b);
 
 #endif

@@ -6,27 +6,11 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 13:10:26 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/18 18:01:10 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/19 05:31:03 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-t_stack	*find_min(t_stack *stack)
-{
-	t_stack	*tmp;
-	t_stack	*min;
-
-	tmp = stack;
-	min = stack;
-	while (tmp)
-	{
-		if (min->nbr > tmp->nbr)
-			min = tmp;
-		tmp = tmp->next;
-	}
-	return (min);
-}
 
 void	update_index(t_stack *stack)
 {
@@ -41,20 +25,18 @@ void	update_index(t_stack *stack)
 	{
 		stack->index = i;
 		stack->status = (i > median);
-		// if (i > median)
-		// 	stack->status = 1;
-		// else
-		// 	stack->status = 0;
 		i++;
 		stack = stack->next;
 	}
 }
 
-int price(t_stack *node, t_stack *s)
+int	price(t_stack *node, t_stack *s)
 {
+	int	size;
+
 	if (node->status == 0)
 		return (node->index);
-	int size = sizelist(s);
+	size = sizelist(s);
 	return (size - node->index);	
 }
 
@@ -78,14 +60,12 @@ t_stack	*calcul_price(t_stack *stack)
 {
 	t_stack	*best_price;
 	t_stack	*tmp;
-	
+
 	best_price = stack;
 	tmp = stack->next;
 	while (tmp)
-	{
+	{	
 		if (best_price->prix > tmp->prix)
-			best_price = tmp;
-		else if (best_price->prix == tmp->prix && tmp->nbr > best_price->nbr)
 			best_price = tmp;
 		tmp = tmp->next;
 	}
@@ -97,8 +77,8 @@ void	find_daron(t_stack *stack_a, t_stack *stack_b)
 	t_stack	*tmp_a;
 	t_stack	*tmp_b;
 	t_stack	*pere;
-	int			min_total;
-	int				total;
+	int		min_total;
+	int		total;
 
 	tmp_b = stack_b;
 	while (tmp_b)
@@ -118,13 +98,8 @@ void	find_daron(t_stack *stack_a, t_stack *stack_b)
 			tmp_b->daron = find_min(stack_a);
 		else
 			tmp_b->daron = pere;
-		// printf("VAL IS %i[%i]S{%i} daron %i[%i]S{%i}\n", tmp_b->nbr, price(tmp_b, stack_b), tmp_b->status, tmp_b->daron->nbr, price(tmp_b->daron, stack_a), tmp_b->daron->status);
-		// printf("PRICE OF %i is %i\n", tmp_b->nbr, price(tmp_b, stack_b));
-		// printf("PRIX DARON(%i) est %i\n", tmp_b->daron->nbr, price(tmp_b->daron, stack_a));
 		total = get_total(tmp_b, stack_b, stack_a);
-		// printf("total price: %d\tdaron index: %d\tstack_b index: %d\tnbr stack b[%d]\n", total, tmp_b->daron->index, tmp_b->index, tmp_b->nbr);
 		tmp_b->prix = total;
-		// printf("prix: %d\tnbr: %d\n", tmp_b->prix, tmp_b->nbr);
 		tmp_b = tmp_b->next;
 	}
 }
