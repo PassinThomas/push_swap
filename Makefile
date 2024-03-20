@@ -6,7 +6,7 @@
 #    By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/21 17:12:27 by tpassin           #+#    #+#              #
-#    Updated: 2024/03/19 03:41:12 by tpassin          ###   ########.fr        #
+#    Updated: 2024/03/15 01:16:54 by tpassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ SRCS =	main.c \
 		srcs/utils/input_utils.c \
 		srcs/update_index.c \
 		srcs/big_algo.c \
-		srcs/mouv.c \
 		
 OBJS = ${SRCS:.c=.o}
 
