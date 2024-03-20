@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:05:02 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/16 02:53:02 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/20 05:43:55 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stack
 char				**join_arg(char **av);
 int					check_sign(int c);
 int					check_doublon(int *tab, int size);
-void				insert_list(char **av, t_stack **headA, int *nb);
+void				insert_list(char **av, t_stack **head_a, int *nb);
 int					*ft_parse(char **av, int *i);
 void				add_front(t_stack **stack, t_stack *new);
 void				add_back(t_stack **stack, t_stack *new);
@@ -42,9 +42,10 @@ int					sizelist(t_stack *stack);
 t_stack				*new_stack(int nbr);
 t_stack				*lstlast(t_stack *stack);
 int					sizelist(t_stack *stack);
+t_stack				*find_max(t_stack *stack);
+t_stack				*find_min(t_stack *stack);
 
 /*operation*/
-void				visual_stack(t_stack *a, t_stack *b);
 void				sa(t_stack **stack_a);
 void				sb(t_stack **stack_b);
 void				ss(t_stack **stack_a, t_stack **stack_b);
@@ -61,13 +62,27 @@ void				rrr(t_stack **stack_a, t_stack **stack_b);
 int					stack_sort(t_stack *stack);
 void				sort_2(t_stack **stack);
 void				sort_3(t_stack **stack);
-void				sort_all(t_stack **stack_a, t_stack **stack_b);
+void				sort_all(t_stack **stack_a, t_stack **stack_b,
+						t_stack *tmp_b);
 void				push_a_to_b(t_stack **stack_a, t_stack **stack_b);
 
 /* update index */
-void	find_daron(t_stack *stack_a, t_stack *stack_b);
-int		get_total(t_stack *stack_b, t_stack *b_daron, t_stack *stack_a);
-void	update_index(t_stack *stack);
-t_stack	*calcul_price(t_stack *stack);
+void				find_daron(t_stack *stack_a, t_stack *stack_b,
+						t_stack *tmp_b);
+int					get_total(t_stack *stack_b, t_stack *b_daron,
+						t_stack *stack_a);
+void				update_index(t_stack *stack);
+t_stack				*find_min(t_stack *stack);
+t_stack				*calcul_price(t_stack *stack);
+
+/*Mouv*/
+void				mouv_top(t_stack *target, t_stack **stack_a,
+						t_stack **stack_b);
+void				mouv_bottom(t_stack *target, t_stack **stack_a,
+						t_stack **stack_b);
+void				mouv_top_bot(t_stack *target, t_stack **stack_a,
+						t_stack **stack_b);
+void				mouv_bot_top(t_stack *target, t_stack **stack_a,
+						t_stack **stack_b);
 
 #endif

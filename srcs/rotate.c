@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 01:23:14 by tpassin           #+#    #+#             */
-/*   Updated: 2024/02/29 02:46:29 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/18 10:44:34 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	rb(t_stack **stack)
 
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
-	ra(stack_a);
-	rb(stack_b);
+	rotate(stack_a);
+	rotate(stack_b);
+	ft_putstr_fd("rr\n", 1);
 }

@@ -6,34 +6,35 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:07:50 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/16 00:09:01 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/20 05:44:28 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/push_swap.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_stack	*headA;
-	t_stack	*headB;
-	// t_stack *tmp;
-	int	nb;
+	t_stack	*head_a;
+	t_stack	*head_b;
+	t_stack	*tmp_b;
+	int		nb;
 
 	nb = 0;
-	headA = NULL;
-	headB = NULL;
+	head_a = NULL;
+	head_b = NULL;
+	tmp_b = NULL;
 	if (ac > 1)
 	{
-		insert_list(av, &headA, &nb);
+		insert_list(av, &head_a, &nb);
 		if (nb == 1)
-			return (ft_clean(&headA), 1);
+			return (ft_clean(&head_a), 1);
 		if (nb == 2)
-			sort_2(&headA);
+			sort_2(&head_a);
 		else if (nb == 3)
-			sort_3(&headA);
+			sort_3(&head_a);
 		else
-			sort_all(&headA, &headB);
-		ft_clean(&headA);
+			sort_all(&head_a, &head_b, tmp_b);
+		ft_clean(&head_a);
 	}
 	return (0);
 }

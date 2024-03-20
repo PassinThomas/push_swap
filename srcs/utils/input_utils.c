@@ -6,13 +6,13 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 00:54:27 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/15 01:19:34 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/20 05:43:55 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	insert_list(char **av, t_stack **headA, int *nb)
+void	insert_list(char **av, t_stack **head_a, int *nb)
 {
 	int	i;
 	int	j;
@@ -26,7 +26,7 @@ void	insert_list(char **av, t_stack **headA, int *nb)
 	{
 		while (j < i)
 		{
-			add_back(headA, new_stack(tab[j]));
+			add_back(head_a, new_stack(tab[j]));
 			j++;
 			(*nb)++;
 		}
@@ -34,5 +34,4 @@ void	insert_list(char **av, t_stack **headA, int *nb)
 	}
 	else
 		exit(1);
-	return ;
 }
