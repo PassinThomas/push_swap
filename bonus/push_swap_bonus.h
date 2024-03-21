@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/21 17:05:02 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/20 22:17:16 by tpassin          ###   ########.fr       */
+/*   Created: 2024/03/20 22:15:11 by tpassin           #+#    #+#             */
+/*   Updated: 2024/03/20 22:42:42 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "../libft/libft.h"
 # include <limits.h>
@@ -57,32 +57,5 @@ void				rr(t_stack **stack_a, t_stack **stack_b);
 void				rra(t_stack **stack);
 void				rrb(t_stack **stack);
 void				rrr(t_stack **stack_a, t_stack **stack_b);
-
-/*algo*/
-int					stack_sort(t_stack *stack);
-void				sort_2(t_stack **stack);
-void				sort_3(t_stack **stack);
-void				sort_all(t_stack **stack_a, t_stack **stack_b,
-						t_stack *tmp_b);
-void				push_a_to_b(t_stack **stack_a, t_stack **stack_b);
-
-/* update index */
-void				find_daron(t_stack *stack_a, t_stack *stack_b,
-						t_stack *tmp_b);
-int					get_total(t_stack *stack_b, t_stack *b_daron,
-						t_stack *stack_a);
-void				update_index(t_stack *stack);
-t_stack				*find_min(t_stack *stack);
-t_stack				*calcul_price(t_stack *stack);
-
-/*Mouv*/
-void				mouv_top(t_stack *target, t_stack **stack_a,
-						t_stack **stack_b);
-void				mouv_bottom(t_stack *target, t_stack **stack_a,
-						t_stack **stack_b);
-void				mouv_top_bot(t_stack *target, t_stack **stack_a,
-						t_stack **stack_b);
-void				mouv_bot_top(t_stack *target, t_stack **stack_a,
-						t_stack **stack_b);
 
 #endif
