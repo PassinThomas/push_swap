@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 14:09:07 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/20 22:30:26 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/22 05:40:43 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**join_arg(char **av)
 		{
 			if (str)
 				free(str);
-			exit (0);
+			exit(0);
 		}
 		if (!str)
 			str = ft_strdup("");

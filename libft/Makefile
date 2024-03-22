@@ -6,7 +6,7 @@
 #    By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 07:12:52 by tpassin           #+#    #+#              #
-#    Updated: 2024/02/26 04:50:11 by tpassin          ###   ########.fr        #
+#    Updated: 2024/03/22 02:54:14 by tpassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,8 @@ ft_split \
 ft_itoa \
 ft_free \
 ft_strcmp \
+get_next_line \
+ft_strjoin_bonus \
 
 SRCS 	= $(addsuffix .c, ${SRC})
 

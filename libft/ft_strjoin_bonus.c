@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_bonus.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 22:07:05 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/22 02:58:30 by tpassin          ###   ########.fr       */
+/*   Created: 2023/11/16 00:20:55 by tpassin           #+#    #+#             */
+/*   Updated: 2024/03/22 05:56:19 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap_bonus.h"
+#include "libft.h"
 
-static void	swap(t_stack **stack)
+char	*ft_join(char const *s1, char const *s2)
 {
-	int	tmp;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	if (!*stack || (!(*stack)->next))
-		return ;
-	tmp = (*stack)->nbr;
-	(*stack)->nbr = (*stack)->next->nbr;
-	(*stack)->next->nbr = tmp;
-}
-
-void	sa(t_stack **stack_a)
-{
-	swap(stack_a);
-}
-
-void	sb(t_stack **stack_b)
-{
-	swap(stack_b);
-}
-
-void	ss(t_stack **stack_a, t_stack **stack_b)
-{
-	swap(stack_a);
-	swap(stack_b);
+	i = 0;
+	j = 0;
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!str)
+		return (NULL);
+	while (s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	return (str);
 }
