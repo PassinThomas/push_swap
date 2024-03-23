@@ -6,36 +6,35 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:16:11 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/23 07:59:08 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/23 08:18:34 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-#include <string.h>
 
 int	mouv(t_stack **a, t_stack **b, char *line)
 {
-	if (strcmp(line, "pa\n") == 0)
+	if (ft_strcmp(line, "pa\n") == 0)
 		return (pa(a, b), 1);
-	else if (strcmp(line, "pb\n") == 0)
+	else if (ft_strcmp(line, "pb\n") == 0)
 		return (pb(a, b), 1);
-	else if (strcmp(line, "sa\n") == 0)
+	else if (ft_strcmp(line, "sa\n") == 0)
 		return (sa(a), 1);
-	else if (strcmp(line, "sb\n") == 0)
+	else if (ft_strcmp(line, "sb\n") == 0)
 		return (sb(b), 1);
-	else if (strcmp(line, "ss\n") == 0)
+	else if (ft_strcmp(line, "ss\n") == 0)
 		return (ss(a, b), 1);
-	else if (strcmp(line, "ra\n") == 0)
+	else if (ft_strcmp(line, "ra\n") == 0)
 		return (ra(a), 1);
-	else if (strcmp(line, "rb\n") == 0)
+	else if (ft_strcmp(line, "rb\n") == 0)
 		return (rb(b), 1);
-	else if (strcmp(line, "rr\n") == 0)
+	else if (ft_strcmp(line, "rr\n") == 0)
 		return (rr(a, b), 1);
-	else if (strcmp(line, "rra\n") == 0)
+	else if (ft_strcmp(line, "rra\n") == 0)
 		return (rra(a), 1);
-	else if (strcmp(line, "rrb\n") == 0)
+	else if (ft_strcmp(line, "rrb\n") == 0)
 		return (rrb(b), 1);
-	else if (strcmp(line, "rrr\n") == 0)
+	else if (ft_strcmp(line, "rrr\n") == 0)
 		return (rrr(a, b), 1);
 	return (0);
 }
