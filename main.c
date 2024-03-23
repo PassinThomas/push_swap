@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:07:50 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/20 05:44:28 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/22 09:39:31 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(int ac, char **av)
 	tmp_b = NULL;
 	if (ac > 1)
 	{
-		insert_list(av, &head_a, &nb);
+		if (!insert_list(av, &head_a, &nb))
+			return (ft_clean(&head_a), 1);
 		if (nb == 1)
 			return (ft_clean(&head_a), 1);
 		if (nb == 2)

@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 14:09:07 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/15 01:19:55 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/22 09:01:28 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	*ft_parse(char **av, int *i)
 		(*i)++;
 	tab = (int *)malloc(sizeof(int) * (*i));
 	if (!tab)
-		return (free(tab), NULL);
+		return (free(tab), ft_free(str), NULL);
 	*i = -1;
 	while (str[++(*i)])
 	{

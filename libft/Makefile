@@ -6,7 +6,7 @@
 #    By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/23 07:12:52 by tpassin           #+#    #+#              #
-#    Updated: 2024/03/22 02:54:14 by tpassin          ###   ########.fr        #
+#    Updated: 2024/03/23 00:55:24 by tpassin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ CC	= cc
 RM	= rm -f
 AR	= ar rc
 
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -g3 -g -Wall -Werror -Wextra
 
 NAME = libft.a
 

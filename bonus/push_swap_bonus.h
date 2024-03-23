@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 22:15:11 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/22 04:07:53 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/22 09:44:56 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_stack
 char				**join_arg(char **av);
 int					check_sign(int c);
 int					check_doublon(int *tab, int size);
-void				insert_list(char **av, t_stack **head_a, int *nb);
+int					insert_list(char **av, t_stack **head_a, int *nb);
 int					*ft_parse(char **av, int *i);
 void				add_front(t_stack **stack, t_stack *new);
 void				add_back(t_stack **stack, t_stack *new);

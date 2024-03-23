@@ -6,17 +6,17 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 00:54:27 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/20 22:30:24 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/23 08:04:58 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	insert_list(char **av, t_stack **head_a, int *nb)
+int	insert_list(char **av, t_stack **head_a, int *nb)
 {
-	int	i;
-	int	j;
-	int	*tab;
+	int		i;
+	int		j;
+	int		*tab;
 
 	i = 0;
 	j = 0;
@@ -32,6 +32,5 @@ void	insert_list(char **av, t_stack **head_a, int *nb)
 		}
 		free(tab);
 	}
-	else
-		exit(1);
+	return (1);
 }

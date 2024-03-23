@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 23:02:06 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/22 02:54:59 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/23 01:22:03 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, int *b);
 char	*ft_join(char const *s1, char const *s2);
 
 #endif

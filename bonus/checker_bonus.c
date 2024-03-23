@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 23:16:11 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/22 05:48:12 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/23 07:59:08 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	stack_sort(t_stack *stack)
 {
 	t_stack	*tmp;
 
+	if (!stack)
+		return (0);
 	tmp = stack;
 	while (tmp->next != NULL)
 	{
@@ -57,9 +59,31 @@ int	stack_sort(t_stack *stack)
 int	valid(t_stack *a, t_stack *b)
 {
 	if (stack_sort(a) && sizelist(b) == 0)
-		return (ft_clean(&a), ft_putstr_fd("OK\n", 1), 1);
+		return (ft_clean(&a), ft_putstr_fd("OK\n", 1), 0);
 	else
-		return (ft_putstr_fd("KO\n", 1), ft_clean(&a), ft_clean(&b), 0);
+		return (ft_putstr_fd("KO\n", 2), ft_clean(&a), ft_clean(&b), 1);
+}
+
+int	check_loop(t_stack *a, t_stack *b, char *line, int c)
+{
+	while (1)
+	{
+		line = get_next_line(0, &c);
+		if (!line)
+			break ;
+		if (mouv(&a, &b, line))
+			free(line);
+		else
+		{
+			free(line);
+			return (ft_putstr_fd("Error\n", 2), ft_clean(&a), ft_clean(&b), 1);
+		}
+		if (c == 0)
+			break ;
+	}
+	if (!c)
+		return (ft_clean(&a), ft_clean(&b), 1);
+	return (valid(a, b));
 }
 
 int	main(int ac, char **av)
@@ -68,25 +92,18 @@ int	main(int ac, char **av)
 	t_stack	*stack_b;
 	char	*line;
 	int		nb;
+	int		b;
 
+	line = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
 	nb = 0;
+	b = 1;
 	if (ac > 1)
 	{
 		insert_list(av, &stack_a, &nb);
-		while (1)
-		{
-			line = get_next_line(0);
-			if (!line)
-				break ;
-			if (mouv(&stack_a, &stack_b, line))
-				free(line);
-			else
-				return (ft_putstr_fd("Error\n", 2), ft_clean(&stack_a),
-					ft_clean(&stack_a), 0);
-		}
-		return (valid(stack_a, stack_b));
+		if (!check_loop(stack_a, stack_b, line, b))
+			return (1);
 	}
 	return (0);
 }

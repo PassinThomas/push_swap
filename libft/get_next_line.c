@@ -6,29 +6,31 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 22:20:28 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/22 02:47:14 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/23 04:34:32 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-static char	*line_buffer(int fd, char *next_read, char *buf);
+static char	*line_buffer(int fd, char *next_read, char *buf, int *b);
 static char	*set_line(char *line_buffer);
-static char	*extract_line(char *buf);
+static char	*extract_line(char *buf, char *t, int *b);
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int *b)
 {
 	static char	*next_read = NULL;
 	char		*line;
 	char		*buf;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
-		return (NULL);
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buf)
-		return (NULL);
-	line = line_buffer(fd, next_read, buf);
+		return (free(next_read), NULL);
+	line = line_buffer(fd, next_read, buf, b);
+	if (b == 0)
+		return (free(next_read), NULL);
 	free(buf);
+	buf = NULL;
 	if (!line)
 		return (free(line), NULL);
 	next_read = set_line(line);
@@ -36,12 +38,15 @@ char	*get_next_line(int fd)
 	if (buf == NULL)
 		return (free(buf), free(next_read), NULL);
 	if (!next_read)
+	{
 		free(next_read);
-	line = extract_line(buf);
+		next_read = NULL;
+	}
+	line = extract_line(buf, next_read, b);
 	return (line);
 }
 
-static char	*line_buffer(int fd, char *next_read, char *buf)
+static char	*line_buffer(int fd, char *next_read, char *buf, int *b)
 {
 	ssize_t	b_read;
 	char	*tmp;
@@ -51,7 +56,10 @@ static char	*line_buffer(int fd, char *next_read, char *buf)
 	{
 		b_read = read(fd, buf, BUFFER_SIZE);
 		if (b_read == -1)
-			return (free(buf), free(next_read), NULL);
+		{
+			*b = 0;
+			return (free(next_read), NULL);
+		}
 		if (b_read == 0)
 			break ;
 		buf[b_read] = '\0';
@@ -69,8 +77,8 @@ static char	*line_buffer(int fd, char *next_read, char *buf)
 
 static char	*set_line(char *line_buffer)
 {
-	char		*stash;
-	ssize_t		i;
+	char	*stash;
+	ssize_t	i;
 
 	i = 0;
 	while (line_buffer[i] != '\n' && line_buffer[i] != '\0')
@@ -78,13 +86,13 @@ static char	*set_line(char *line_buffer)
 	if (line_buffer[i] == 0)
 		return (NULL);
 	stash = ft_substr(line_buffer, i + 1, ft_strlen(line_buffer) - i);
-	if (stash[0] == 0)
+	if (stash && stash[0] == 0)
 		return (free(stash), NULL);
 	line_buffer[i + 1] = '\0';
 	return (stash);
 }
 
-static char	*extract_line(char *buf)
+static char	*extract_line(char *buf, char *t, int *b)
 {
 	ssize_t	i;
 	char	*new_line;
@@ -93,14 +101,14 @@ static char	*extract_line(char *buf)
 	while (buf[i] && buf[i] != '\n')
 		i++;
 	new_line = malloc(sizeof(char) * (i + 2));
-	if (!new_line)
-		return (free(new_line), NULL);
-	i = 0;
-	while (buf[i] && buf[i] != '\n')
+	if (new_line == NULL)
 	{
-		new_line[i] = buf[i];
-		i++;
+		*b = 0;
+		return (free(buf), free(t), NULL);
 	}
+	i = -1;
+	while (buf[++i] && buf[i] != '\n')
+		new_line[i] = buf[i];
 	if (buf[i] == '\n')
 	{
 		new_line[i] = buf[i];
