@@ -6,12 +6,11 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 22:20:28 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/23 04:34:32 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:26:02 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static char	*line_buffer(int fd, char *next_read, char *buf, int *b);
 static char	*set_line(char *line_buffer);

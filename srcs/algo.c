@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 03:49:03 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/23 00:38:26 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:35:52 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	sort_3(t_stack **stack)
 	int	thrd;
 
 	if (!*stack || !(*stack)->next || !(*stack)->next->next)
-		return (ft_clean(stack), ft_clean(stack), exit(1));
+		return (ft_clean(stack), exit(1));
 	first = (*stack)->nbr;
 	second = (*stack)->next->nbr;
 	thrd = (*stack)->next->next->nbr;

@@ -6,7 +6,7 @@
 /*   By: tpassin <tpassin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 17:07:50 by tpassin           #+#    #+#             */
-/*   Updated: 2024/03/22 09:39:31 by tpassin          ###   ########.fr       */
+/*   Updated: 2024/03/24 15:35:24 by tpassin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 			return (ft_clean(&head_a), 1);
 		if (nb == 1)
 			return (ft_clean(&head_a), 1);
-		if (nb == 2)
+		else if (nb == 2)
 			sort_2(&head_a);
 		else if (nb == 3)
 			sort_3(&head_a);
