@@ -31,6 +31,7 @@ int	insert_list(char **av, t_stack **head_a, int *nb)
 			(*nb)++;
 		}
 		free(tab);
+		return (1);
 	}
-	return (1);
+	return (0);
 }
