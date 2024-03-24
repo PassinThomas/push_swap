@@ -100,7 +100,8 @@ int	main(int ac, char **av)
 	b = 1;
 	if (ac > 1)
 	{
-		insert_list(av, &stack_a, &nb);
+		if (!insert_list(av, &stack_a, &nb))
+			return (1);
 		if (!check_loop(stack_a, stack_b, line, b))
 			return (1);
 	}
